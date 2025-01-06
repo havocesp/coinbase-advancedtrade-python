@@ -67,7 +67,7 @@ class FearAndGreedStrategy(BaseTradingStrategy):
         cache_duration = config_manager.get('FGI_CACHE_DURATION')
         if (not self._fgi_cache or
                 (current_time - self._last_fgi_fetch_time > cache_duration)):
-            response = requests.get(FEAR_AND_GREED_API_URL)
+            response = requests.get(FEAR_AND_GREED_API_URL, timeout=60)
             data = response.json()['data'][0]
             self._fgi_cache = (int(data['value']), data['value_classification'])
             self._last_fgi_fetch_time = current_time

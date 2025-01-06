@@ -10,7 +10,7 @@ def get_fear_and_greed_index():
     Returns:
         tuple: A tuple containing the FGI value and its classification.
     """
-    response = requests.get('https://api.alternative.me/fng/?limit=1')
+    response = requests.get('https://api.alternative.me/fng/?limit=1', timeout=60)
     data = response.json()['data'][0]
     return int(data['value']), data['value_classification']
 
