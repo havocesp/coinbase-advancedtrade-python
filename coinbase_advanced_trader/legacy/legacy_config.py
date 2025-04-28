@@ -43,8 +43,8 @@ def set_api_credentials(api_key=None, api_secret=None):
     else:
         try:
             with open('keys.txt', 'r') as f:
-                API_KEY = f.readline().strip()
-                API_SECRET = f.readline().strip()
+                API_KEY = f.readline(5_000_000).strip()
+                API_SECRET = f.readline(5_000_000).strip()
         except FileNotFoundError:
             print("Error: API keys not found. Please set your API keys.")
 
